@@ -21,6 +21,17 @@ module.exports = appInfo => {
   //   tip: "当前日期:"
   // };
 
+  // cookie
+  config.keys = "afasdfasfasfasfsafsa";
+
+  // session
+  config.session = {
+    maxAge: 2 * 3600 * 1000,
+    httpOnly: true,
+    encrypt: true,
+    renew: true
+  };
+
   // 模板引擎
   config.view = {
     mapping: { ".html": "ejs" }

@@ -12,7 +12,7 @@ class Validate {
     }
   }
   createErrMsg(rule) {
-    const { val, required, regExp } = rule;
+    const { _v: val, required, regExp } = rule;
     // 验证不为空
     if (required && required[0] && (val === undefined || val.trim() === "")) {
       this.errMsg = required[1];

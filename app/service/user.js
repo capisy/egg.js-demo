@@ -9,12 +9,12 @@ module.exports = app => {
 
       const errValidate = validate([
         {
-          val: name,
+          _v: name,
           required: [true, "名字不能为空"],
           regExp: [/^\w{2,10}$/i, "名字必须为2-10个英文字符"]
         },
         {
-          val: tel,
+          _v: tel,
           required: [true, "电话号码不能为空"],
           regExp: [/^[01]\d{10}$/, "电话号码格式不正确"]
         }

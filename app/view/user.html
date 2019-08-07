@@ -6,18 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>user</title>
+  <link rel="stylesheet" href="/public/css/common.css">
 </head>
 
 <body>
-  <ul>
-    <% for(let item of user){ %>
-    <li>
-      <span><%= item.userName %></span>
-      <span><%= item.age %></span>
-    </li>
-    <% } %>
-  </ul>
-
+  <table class="table-wrap">
+    <thead>
+      <td width="30%">id</td>
+      <td width="40%">用户名</td>
+      <td width="30%">年龄</td>
+    </thead>
+    <tbody>
+      <% for(const item of user){ %>
+      <tr>
+        <td><%=item.userId %></td>
+        <td><%=item.userName %></td>
+        <td><%=item.age %></td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
 </body>
 
 </html>

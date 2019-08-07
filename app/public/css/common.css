@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #444;
+  font-size: 16px;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.table-wrap {
+  width: 600px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+}
+
+.table-wrap th,
+.table-wrap td {
+  padding: 10px 0;
+  line-height: 1;
+  border-bottom: 1px solid #ddd;
+  text-align: center;
+}

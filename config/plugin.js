@@ -7,7 +7,11 @@ module.exports = {
     package: "egg-view-ejs"
   },
   sequelize: {
-    enable: true,
+    enable: false,
     package: "egg-sequelize"
+  },
+  mongoose: {
+    enable: true,
+    package: "egg-mongoose"
   }
 };

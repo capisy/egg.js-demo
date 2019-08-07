@@ -1,17 +1,23 @@
 module.exports = app => {
-  const { STRING, INTEGER } = app.Sequelize;
-  const User = app.model.define(
-    "user",
-    {
-      userId: { type: INTEGER, primaryKey: true, autoIncrement: true },
-      userName: STRING(50),
-      age: INTEGER,
-      password: STRING(32)
-    },
-    {
-      freezeTableName: true,
-      timestamps: false
+  const mongoose = app.mongoose;
+  const Schema = mongoose.Schema;
+
+  const UserSchema = new Schema({
+    name: { type: String, required: [true, "Name required !"] },
+    tel: {
+      type: Number,
+      required: [true, "Phone number required !"],
+      validate: {
+        validator: v => /[01]\d{10}/.test(v),
+        message: props => `${props.value} is not a valid phone number !`
+      }
     }
-  );
-  return User;
+  });
+
+  // const UserSchema = new Schema({
+  //   name: String,
+  //   tel: Number
+  // });
+
+  return mongoose.model("User", UserSchema, "user");
 };

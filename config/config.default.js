@@ -47,6 +47,14 @@ module.exports = appInfo => {
     password: "123456"
   };
 
+  // mongodb连接
+  config.mongoose = {
+    client: {
+      url: "mongodb://127.0.0.1/mf_egg",
+      options: {}
+    }
+  };
+
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',

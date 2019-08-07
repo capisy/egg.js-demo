@@ -1,13 +1,16 @@
 module.exports = app => {
   class UserService extends app.Service {
     async add() {
-      const { name, tel } = this.ctx.query;
+      const { name, tel } = this.ctx.request.body;
       const { User } = this.ctx.model;
-      let user = await User.findOne({ name });
-      if (!user) {
-        user = await User.create({ name, tel });
+      try {
+        return await User.create({ name, tel });
+      } catch ({ code, errmsg }) {
+        return {
+          code,
+          errmsg
+        };
       }
-      return user;
     }
     async findAll() {
       return await this.ctx.model.User.find(

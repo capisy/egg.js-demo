@@ -32,6 +32,12 @@ module.exports = appInfo => {
     renew: true
   };
 
+  config.security = {
+    csrf: {
+      enable: false
+    }
+  };
+
   // 模板引擎
   config.view = {
     mapping: { ".html": "ejs" }

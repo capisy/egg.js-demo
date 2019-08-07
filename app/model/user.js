@@ -3,7 +3,11 @@ module.exports = app => {
   const Schema = mongoose.Schema;
 
   const UserSchema = new Schema({
-    name: { type: String, required: [true, "Name required !"] },
+    name: {
+      type: String,
+      required: [true, "Name required !"],
+      unique: true
+    },
     tel: {
       type: Number,
       required: [true, "Phone number required !"],

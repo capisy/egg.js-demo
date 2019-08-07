@@ -66,6 +66,10 @@ module.exports = appInfo => {
     // myAppName: 'egg',
   };
 
+  config.logger = {
+    disableConsoleAfterReady: false
+  };
+
   return {
     ...config,
     ...userConfig

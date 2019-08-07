@@ -5,23 +5,15 @@ module.exports = app => {
   const UserSchema = new Schema({
     name: {
       type: String,
-      required: [true, "Name required !"],
+      required: true,
       unique: true
     },
     tel: {
       type: Number,
-      required: [true, "Phone number required !"],
-      validate: {
-        validator: v => /[01]\d{10}/.test(v),
-        message: props => `${props.value} is not a valid phone number !`
-      }
+      required: true,
+      validate: v => /[01]\d{10}/.test(v)
     }
   });
-
-  // const UserSchema = new Schema({
-  //   name: String,
-  //   tel: Number
-  // });
 
   return mongoose.model("User", UserSchema, "user");
 };

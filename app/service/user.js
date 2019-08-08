@@ -1,5 +1,5 @@
 const validate = require("../utils/validate");
-const { SUCCESS, ERROR } = require("../utils/interfaceCode");
+const { SUCCESS, ERROR, SYSTEM_ERROR } = require("../utils/interfaceCode");
 
 module.exports = app => {
   class UserService extends app.Service {
@@ -10,8 +10,8 @@ module.exports = app => {
       const errValidate = validate([
         {
           _v: name,
-          required: [true, "名字不能为空"],
-          regExp: [/^\w{2,10}$/i, "名字必须为2-10个英文字符"]
+          required: [true, "名字不能为空"]
+          // regExp: [/^\w{2,10}$/i, "名字必须为2-10个英文字符"]
         },
         {
           _v: tel,
@@ -37,7 +37,7 @@ module.exports = app => {
       } catch (err) {
         return {
           msg: err.errmsg,
-          ...ERROR
+          ...SYSTEM_ERROR
         };
       }
     }

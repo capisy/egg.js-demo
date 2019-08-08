@@ -5,5 +5,8 @@ module.exports = {
   },
   ERROR: {
     errCode: 1
+  },
+  SYSTEM_ERROR: {
+    errCode: 2
   }
 };

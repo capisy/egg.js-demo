@@ -4,14 +4,13 @@ const { SUCCESS, ERROR, SYSTEM_ERROR } = require("../utils/interfaceCode");
 module.exports = app => {
   class UserService extends app.Service {
     async add() {
-      const { name, tel } = this.ctx.request.body;
+      const { name, tel, psw, pswagain } = this.ctx.request.body;
       const { User } = this.ctx.model;
 
       const errValidate = validate([
         {
           _v: name,
           required: [true, "名字不能为空"]
-          // regExp: [/^\w{2,10}$/i, "名字必须为2-10个英文字符"]
         },
         {
           _v: tel,
@@ -41,6 +40,7 @@ module.exports = app => {
         };
       }
     }
+
     async findAll() {
       return await this.ctx.model.User.find(
         {},

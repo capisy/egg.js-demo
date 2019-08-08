@@ -1,7 +1,7 @@
 ##### 验证文档
 
 ```
-const validate = require("../utils/validate");
+const {validate, pValidate} = require("../utils/validate");
 const { ERROR } = require("../utils/interfaceCode");
 ```
 

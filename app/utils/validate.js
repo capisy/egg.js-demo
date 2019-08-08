@@ -1,9 +1,11 @@
-class Validate {
+class ValidateBase {
   constructor(rules) {
     this.errMsg = "";
     this.rules = rules;
-    this.vItems = ["isRequired", "isRegExp", "isPwsAgain"];
-    this.parseRules();
+  }
+
+  init() {
+    return this.parseRules().isValidate();
   }
 
   parseRules() {
@@ -12,6 +14,7 @@ class Validate {
       const err = this.createErrMsg(rule);
       if (!err) break;
     }
+    return this;
   }
 
   createErrMsg(rule) {
@@ -24,6 +27,17 @@ class Validate {
       }
     }
     return flag;
+  }
+
+  isValidate() {
+    return this.errMsg ? { msg: this.errMsg } : false;
+  }
+}
+
+class Validate extends ValidateBase {
+  constructor(rules) {
+    super(rules);
+    this.vItems = ["isRequired", "isRegExp"];
   }
 
   isRequired() {
@@ -43,6 +57,13 @@ class Validate {
       return false;
     }
   }
+}
+
+class PlusValidate extends Validate {
+  constructor(rules) {
+    super(rules);
+    this.vItems = this.vItems.concat(["isPwsAgain"]);
+  }
 
   isPwsAgain() {
     // 判断两次输入的密码是否相同
@@ -52,12 +73,13 @@ class Validate {
       return false;
     }
   }
-
-  isValidate() {
-    return this.errMsg ? { msg: this.errMsg } : false;
-  }
 }
 
-module.exports = rules => {
-  return new Validate(rules).isValidate();
+module.exports = {
+  validate(rules) {
+    return new Validate(rules).init();
+  },
+  pValidate(rules) {
+    return new PlusValidate(rules).init();
+  }
 };

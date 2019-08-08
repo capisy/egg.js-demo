@@ -1,10 +1,10 @@
-const validate = require("../utils/validate");
+const { validate } = require("../utils/validate");
 const { SUCCESS, ERROR, SYSTEM_ERROR } = require("../utils/interfaceCode");
 
 module.exports = app => {
   class UserService extends app.Service {
     async add() {
-      const { name, tel, psw, pswagain } = this.ctx.request.body;
+      const { name, tel } = this.ctx.request.body;
       const { User } = this.ctx.model;
 
       const errValidate = validate([

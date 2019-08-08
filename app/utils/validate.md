@@ -2,7 +2,7 @@
 
 ```
 const validate = require("../utils/validate");
-const { SUCCESS, ERROR, SYSTEM_ERROR } = require("../utils/interfaceCode");
+const { ERROR } = require("../utils/interfaceCode");
 ```
 
 ```

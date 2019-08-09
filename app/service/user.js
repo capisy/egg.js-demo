@@ -14,8 +14,8 @@ module.exports = app => {
         },
         {
           _v: tel,
-          required: [true, "电话号码不能为空"],
-          regExp: [/^[01]\d{10}$/, "电话号码格式不正确"]
+          required: [true, "电话号码不能为空"]
+          // regExp: [/^[01]\d{10}$/, "电话号码格式不正确"]
         }
       ]);
 
@@ -45,7 +45,7 @@ module.exports = app => {
         };
       } catch (err) {
         return {
-          msg: err.errmsg,
+          msg: err.errmsg || err._message,
           ...SYSTEM_ERROR
         };
       }

@@ -7,25 +7,6 @@ module.exports = app => {
       const { name, tel } = this.ctx.request.body;
       const { User } = this.ctx.model;
 
-      const errValidate = validate([
-        {
-          _v: name,
-          required: [true, "名字不能为空"]
-        },
-        {
-          _v: tel,
-          required: [true, "电话号码不能为空"]
-          // regExp: [/^[01]\d{10}$/, "电话号码格式不正确"]
-        }
-      ]);
-
-      if (errValidate) {
-        return {
-          ...errValidate,
-          ...ERROR
-        };
-      }
-
       try {
         /**
          * 添加操作的两种方法
@@ -45,7 +26,7 @@ module.exports = app => {
         };
       } catch (err) {
         return {
-          msg: err.errmsg || err._message,
+          msg: err,
           ...SYSTEM_ERROR
         };
       }
